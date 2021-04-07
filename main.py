@@ -3,9 +3,11 @@ from selenium import webdriver
 import time
 
 
-
-driver = webdriver.Chrome("E:\\Users\\Fab\\Python\\chromedriver.exe")
+driver = webdriver.Chrome("chromedriver.exe")
+driver.maximize_window()
 driver.get("https://lichess.org/paste")
+
+
 
 search_field = driver.find_element_by_id("form3-pgn")
 

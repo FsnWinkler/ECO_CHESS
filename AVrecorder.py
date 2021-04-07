@@ -1,5 +1,4 @@
 import multiprocessing
-
 import mss
 import pyaudio
 import wave
@@ -7,7 +6,7 @@ import keyboard
 import time
 import datetime
 import numpy
-import pyautogui
+#import pyautogui
 import cv2
 import moviepy.editor as mpe
 
@@ -17,7 +16,6 @@ def record_audio():
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
     RATE = 44100
-    # RECORD_SECONDS = 40
     WAVE_OUTPUT_FILENAME = "audio.wav"
     dev_index = 3
 
@@ -34,7 +32,6 @@ def record_audio():
 
     frames = []
     while True:
-        # for i in range(0, int(RATE / CHUNK)):
         data = stream.read(CHUNK)
         frames.append(data)
 
@@ -58,7 +55,7 @@ def record_audio():
 
 def record_video():
     filename = "video"
-    SCREEN_SIZE = (680, 700)
+    SCREEN_SIZE = (720, 720)
 
     print("Starte Aufnahme")
     print(datetime.datetime.now())
@@ -68,7 +65,7 @@ def record_video():
         start = time.time()
         with mss.mss() as sct:
             # The screen part to capture
-            region = {'top': 600, 'left': 125, 'width': 680, 'height': 700}
+            region = {'top': 180, 'left': 581, 'width': 720, 'height': 720}
 
             # Grab the data
             img = sct.grab(region)
@@ -76,18 +73,16 @@ def record_video():
             # Save to the picture file
             #mss.tools.to_png(img.rgb, img.size, output='dummy.png')
 
-
         #img = pyautogui.screenshot(region=(600, 125, 680, 700))
         frames.append(img)
         if keyboard.is_pressed('x'):
             print("Stoppe Aufnahme")
             print(datetime.datetime.now())
             break
-        time.sleep(max(1. / 40 - (time.time() - start), 0))
-
+        time.sleep(max(1. / 24 - (time.time() - start), 0))
 
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
-    vid = cv2.VideoWriter(filename + ".avi", fourcc, 40.0, (SCREEN_SIZE))
+    vid = cv2.VideoWriter(filename + ".avi", fourcc, 24.0, (SCREEN_SIZE))
     for img in frames:
         numpy_frame = numpy.array(img)
         frame = cv2.cvtColor(numpy_frame, cv2.COLOR_BGR2RGB)
