@@ -7,6 +7,7 @@ class ChessOpening:
         self.pgn_f = pgn_f
         self.game = load_game(self.pgn_f)
 
+        self.pgn_string = str(self.game)
         self.eco_code = get_val_from_game_header(self.game, "Site")
         self.opening = get_val_from_game_header(self.game, "White")
         self.variation = get_val_from_game_header(self.game, "Black")
