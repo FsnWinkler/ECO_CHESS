@@ -8,7 +8,7 @@ class ChessOpening:
         self.game = load_game(self.pgn_f)
 
         self.pgn_string = str(self.game)
-        self.pgn_string_moves_only = str(self.game.mainline_moves())
+        self.pgn_string_moves_only = get_pgn_string_moves_only(self.game)
         self.eco_code = get_val_from_game_header(self.game, "Site")
         self.opening = get_val_from_game_header(self.game, "White")
         self.variation = get_val_from_game_header(self.game, "Black")
@@ -24,6 +24,13 @@ def get_half_moves_amount(game):
         return None
 
     return len([move for move in game.mainline_moves()])
+
+
+def get_pgn_string_moves_only(game):
+    if game is None:
+        return None
+
+    return str(game.mainline_moves())
 
 
 def get_val_from_game_header(game, key):

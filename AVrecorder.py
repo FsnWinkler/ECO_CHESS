@@ -6,7 +6,6 @@ import keyboard
 import time
 import datetime
 import numpy
-#import pyautogui
 import cv2
 import moviepy.editor as mpe
 
@@ -55,7 +54,7 @@ def record_audio():
 
 def record_video():
     filename = "video"
-    SCREEN_SIZE = (720, 720)
+    SCREEN_SIZE = (720, 920)
 
     print("Starte Aufnahme")
     print(datetime.datetime.now())
@@ -65,7 +64,7 @@ def record_video():
         start = time.time()
         with mss.mss() as sct:
             # The screen part to capture
-            region = {'top': 180, 'left': 581, 'width': 720, 'height': 720}
+            region = {'top': 80, 'left': 581, 'width': 720, 'height': 920}
 
             # Grab the data
             img = sct.grab(region)
