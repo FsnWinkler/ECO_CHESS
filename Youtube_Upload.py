@@ -12,19 +12,19 @@ channel = Channel()
 channel.login(client_secret_path, credentials_storage_path)
 
 # setting up the video that is going to be uploaded
-video = LocalVideo(file_path="output_final.mp4")
+video = LocalVideo(file_path="0_C89_Ruy Lopez_Marshall, Main line, Spassky Variation .mp4")
 
 # setting snippet
-video.set_title("My Title")
+video.set_title("My Title new #shorts")
 video.set_description("This is a description")
-video.set_tags(["this", "tag"])
+video.set_tags(["this", "tag", "shorts"])
 video.set_category("gaming")
 video.set_default_language("en-US")
 
 # setting status
 video.set_embeddable(True)
 video.set_license("creativeCommon")
-video.set_privacy_status("private")
+video.set_privacy_status("public")
 video.set_public_stats_viewable(True)
 
 # setting thumbnail
