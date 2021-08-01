@@ -14,7 +14,7 @@ if __name__ == '__main__':
     chess_openings = ChessOpening.load_chess_openings(pgn_file_path)
     errors = []
     y = 0
-    i = 0
+    i = 1463
     while True:
         chess_opening = chess_openings[i]
     # longest opening 1516
@@ -23,7 +23,7 @@ if __name__ == '__main__':
         if i > 6000:
             break
         try:
-            time_now_plus_min = datetime.datetime.now() + datetime.timedelta(0, 30)  # days, seconds, then other fields
+            time_now_plus_min = datetime.datetime.now() + datetime.timedelta(0, 60)  # days, seconds, then other fields
             p1 = multiprocessing.Process(target=BrowserHandling.start_browser, args=(chess_opening.pgn_string,
                                                                                      chess_opening.half_moves_amount,
                                                                                      time_now_plus_min))
